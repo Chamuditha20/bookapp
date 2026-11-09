@@ -25,8 +25,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 "readPages INTEGER, " +
                 "progress DOUBLE, " +
                 "rating INTEGER,"+
-                "pdfUrl TEXT, " +
-                "content TEXT, " +
                 "addedDate TEXT)");
     }
 
@@ -36,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public long insertBook(String title,String author,String category,int totalPages,int readPages,double progress,int rating,String addedDate,String content,String pdfUrl)
+    public long insertBook(String title,String author,String category,int totalPages,int readPages,double progress,int rating,String addedDate)
     {
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
@@ -48,15 +46,13 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("progress",progress);
         cv.put("rating",rating);
         cv.put("addedDate",addedDate);
-        cv.put("content", content);
-        cv.put("pdfUrl", pdfUrl);
         return sqLiteDatabase.insert("books",null,cv);
     }
     public Cursor getAllBooks(){
         SQLiteDatabase sqLiteDatabase=this.getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM books",null);
     }
-    public boolean updateBook(int id, String title, String author, String category, int totalPages, int readPages, double progress, int rating, String addedDate, String content, String pdfUrl) {
+    public boolean updateBook(int id, String title, String author, String category, int totalPages, int readPages, double progress, int rating, String addedDate) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("title", title);
@@ -67,8 +63,6 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put("progress", progress);
         cv.put("rating", rating);
         cv.put("addedDate", addedDate);
-        cv.put("content", content);
-        cv.put("pdfUrl", pdfUrl);
         int result = db.update("books", cv, "id = ?", new String[]{String.valueOf(id)});
         return result > 0;
     }
