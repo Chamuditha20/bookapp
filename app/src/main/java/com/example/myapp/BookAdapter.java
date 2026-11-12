@@ -52,7 +52,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         return bookList.size();
     }
 
-   
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvItemTitle, tvItemAuthorCategory, tvItemProgress, tvItemRatingDate;
 
