@@ -44,6 +44,24 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
         holder.tvItemProgress.setText("Progress: " + currentBook.getReadPages() + " / " + currentBook.getTotalPages() + " pages (" + formattedProgress + "%)");
 
         holder.tvItemRatingDate.setText("Rating: " + currentBook.getRating() + "/5   |   Added: " + currentBook.getAddedDate());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpdateDeleteActivity.class);
+                intent.putExtra("id", currentBook.getId());
+                intent.putExtra("title", currentBook.getTitle());
+                intent.putExtra("author", currentBook.getAuthor());
+                intent.putExtra("category", currentBook.getCategory());
+                intent.putExtra("content", currentBook.getContent());
+                intent.putExtra("pdfUrl", currentBook.getPdfUrl());
+                intent.putExtra("totalPages", currentBook.getTotalPages());
+                intent.putExtra("readPages", currentBook.getReadPages());
+                intent.putExtra("rating", currentBook.getRating());
+                intent.putExtra("addedDate", currentBook.getAddedDate());
+                context.startActivity(intent);
+            }
+        });
     }
 
 

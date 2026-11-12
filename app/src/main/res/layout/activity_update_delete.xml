@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F7FA"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- පිටුවේ මාතෘකාව -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Read, Update &amp; Delete"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#1E293B"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- PDF එක Download / Open කරගන්නා Button එක -->
+        <Button
+            android:id="@+id/btnOpenPdf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Download / Read Full PDF"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#8B5CF6"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title:"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <EditText
+            android:id="@+id/etUpTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#0F172A"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Author:"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <EditText
+            android:id="@+id/etUpAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#0F172A"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category:"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <RadioGroup
+            android:id="@+id/rgUpCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <RadioButton
+                android:id="@+id/rbUpBook"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book"
+                android:textColor="#0F172A"
+                android:layout_marginRight="24dp" />
+
+            <RadioButton
+                android:id="@+id/rbUpArticle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Research Article"
+                android:textColor="#0F172A" />
+        </RadioGroup>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Book / Article Content (Reading View):"
+            android:textStyle="bold"
+            android:textColor="#2563EB" />
+
+        <EditText
+            android:id="@+id/etUpContent"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:inputType="textMultiLine"
+            android:gravity="top|start"
+            android:textColor="#0F172A"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PDF Link / URL:"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <EditText
+            android:id="@+id/etUpPdfUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textUri"
+            android:textColor="#0F172A"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total Pages:"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <EditText
+            android:id="@+id/etUpTotalPages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="#0F172A"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pages Read So Far:"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <EditText
+            android:id="@+id/etUpReadPages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textColor="#0F172A"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 7. Rating (SeekBar) -->
+        <TextView
+            android:id="@+id/tvUpRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rating: 0 / 5"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <SeekBar
+            android:id="@+id/sbUpRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 8. Date -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Added Date:"
+            android:textStyle="bold"
+            android:textColor="#334155" />
+
+        <EditText
+            android:id="@+id/etUpDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#0F172A"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="20dp" />
+
+        <!-- 9. Action Buttons (Update, Delete, Back) - Lab 9 Page 13 -->
+        <Button
+            android:id="@+id/btnUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Record"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#2563EB"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete Record"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:backgroundTint="#EF4444"
+            android:padding="12dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnBackToList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back to List"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#475569"
+            android:padding="12dp" />
+
+    </LinearLayout>
+</ScrollView>
