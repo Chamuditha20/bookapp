@@ -139,10 +139,10 @@ public class UpdateDeleteActivity extends AppCompatActivity {
                     return;
                 }
 
-                
+
                 double progress = ((double) readPages / totalPages) * 100.0;
 
-                boolean isUpdated = db.updateBook(bookId, title, author, category, content, pdfUrl, totalPages, readPages, progress, selectedRating, date);
+                boolean isUpdated = db.updateBook(bookId, title, author, category, totalPages, readPages, progress, selectedRating, date, content, pdfUrl);
 
                 if (isUpdated) {
                     String formattedProgress = String.format("%.1f", progress);

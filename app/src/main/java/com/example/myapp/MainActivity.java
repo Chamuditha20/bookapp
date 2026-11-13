@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -49,6 +50,29 @@ public class MainActivity extends AppCompatActivity {
 
         db=new DBHelper(this);
 
+
+        etDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final java.util.Calendar calendar = java.util.Calendar.getInstance();
+                int year = calendar.get(java.util.Calendar.YEAR);
+                int month = calendar.get(java.util.Calendar.MONTH);
+                int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
+
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(android.widget.DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+
+                                String formattedDate = selectedYear + "-" + (selectedMonth + 1) + "-" + selectedDay;
+                                etDate.setText(formattedDate);
+                            }
+                        }, year, month, day);
+                datePickerDialog.show();
+            }
+        });
         sbRating.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar,int progress,boolean fromUser) {
