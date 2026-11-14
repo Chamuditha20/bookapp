@@ -27,14 +27,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public BookAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.single_book_item, parent, false);
         return new ViewHolder(view);
     }
 
 
     @Override
-    public void onBindViewHolder(@NonNull BookAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BookData currentBook = bookList.get(position);
 
         holder.tvItemTitle.setText(currentBook.getTitle());
@@ -68,6 +68,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return bookList.size();
+    }
+
+
+    public void filterList(ArrayList<BookData> filteredList) {
+        this.bookList = filteredList;
+        notifyDataSetChanged();
     }
 
 

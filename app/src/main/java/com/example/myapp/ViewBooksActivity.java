@@ -2,9 +2,12 @@ package com.example.myapp;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +18,10 @@ import java.util.ArrayList;
 public class ViewBooksActivity extends AppCompatActivity {
 
     RecyclerView recyclerViewBooks;
+    TextView tvSummaryStats;
+    EditText etSearchBook;
     Button btnBack;
+
     DBHelper db;
     ArrayList<BookData> bookList;
     BookAdapter adapter;
@@ -27,18 +33,32 @@ public class ViewBooksActivity extends AppCompatActivity {
 
 
         recyclerViewBooks = findViewById(R.id.recyclerViewBooks);
+        tvSummaryStats = findViewById(R.id.tvSummaryStats);
+        etSearchBook = findViewById(R.id.etSearchBook);
         btnBack = findViewById(R.id.btnBack);
+
         db = new DBHelper(this);
         bookList = new ArrayList<>();
 
 
-        loadBooksData();
-
-
-        adapter = new BookAdapter(this, bookList);
-        recyclerViewBooks.setHasFixedSize(true);
         recyclerViewBooks.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewBooks.setAdapter(adapter);
+
+
+        loadDataFromDatabase();
+
+
+        etSearchBook.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterBooks(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
 
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -50,29 +70,69 @@ public class ViewBooksActivity extends AppCompatActivity {
     }
 
 
-    private void loadBooksData() {
-        Cursor res = db.getAllBooks();
-        if (res.getCount() == 0) {
-            Toast.makeText(this, "No books or articles found!", Toast.LENGTH_SHORT).show();
-            return;
+    private void loadDataFromDatabase() {
+        bookList.clear();
+        Cursor cursor = db.getAllBooks();
+
+        if (cursor != null && cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(0);
+                String title = cursor.getString(1);
+                String author = cursor.getString(2);
+                String category = cursor.getString(3);
+                String content = cursor.getString(4);
+                String pdfUrl = cursor.getString(5);
+                int totalPages = cursor.getInt(6);
+                int readPages = cursor.getInt(7);
+                double progress = cursor.getDouble(8);
+                int rating = cursor.getInt(9);
+                String addedDate = cursor.getString(10);
+
+
+                BookData book = new BookData(id, title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate);
+                bookList.add(book);
+            }
+            cursor.close();
         }
 
-        while (res.moveToNext()) {
 
-            int id = res.getInt(0);
-            String title = res.getString(1);
-            String author = res.getString(2);
-            String category = res.getString(3);
-            String content = res.getString(4);
-            String pdfUrl = res.getString(5);
-            int totalPages = res.getInt(6);
-            int readPages = res.getInt(7);
-            double progress = res.getDouble(8);
-            int rating = res.getInt(9);
-            String addedDate = res.getString(10);
+        adapter = new BookAdapter(this, bookList);
+        recyclerViewBooks.setAdapter(adapter);
 
 
-            bookList.add(new BookData(id, title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate));
+        updateSummaryStats();
+    }
+
+
+    private void updateSummaryStats() {
+        int totalItems = bookList.size();
+        int completedItems = 0;
+
+        for (BookData book : bookList) {
+            if (book.getProgress() >= 100.0) {
+                completedItems++;
+            }
         }
+
+        tvSummaryStats.setText("Total Items: " + totalItems + "   |   Completed: " + completedItems);
+    }
+
+
+    private void filterBooks(String text) {
+        ArrayList<BookData> filteredList = new ArrayList<>();
+        for (BookData item : bookList) {
+            if (item.getTitle().toLowerCase().contains(text.toLowerCase()) ||
+                    item.getAuthor().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadDataFromDatabase();
     }
 }

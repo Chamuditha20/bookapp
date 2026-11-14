@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 double progress=((double)readPages/totalPages)*100.0;
-                long rowId=db.insertBook(title,author,category,totalPages,readPages,progress,selectedRating,date,content,pdfurl);
-                if(rowId!=-1)
+                boolean isInserted = db.insertBook(title, author, category, content, pdfurl, totalPages, readPages, progress, selectedRating, date);
+                if(isInserted)
                 {
                     String formattedProgress=String.format("%.1f",progress);
                     Toast.makeText(MainActivity.this,"Saved progress: "+formattedProgress+"%",Toast.LENGTH_LONG).show();
