@@ -6,7 +6,7 @@
     android:background="#F8FAFC"
     android:padding="16dp">
 
-    <!-- Screen Title -->
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:layout_marginBottom="12dp" />
 
-    <!-- Reading Summary Dashboard -->
+
     <TextView
         android:id="@+id/tvSummaryStats"
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:gravity="center"
         android:layout_marginBottom="10dp" />
 
-    <!-- Search Bar -->
+
     <EditText
         android:id="@+id/etSearchBook"
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
         android:textColor="#0F172A"
         android:layout_marginBottom="12dp" />
 
-    <!-- RecyclerView for displaying items -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBooks"
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
         android:layout_weight="1"
         android:layout_marginBottom="12dp" />
 
-    <!-- Back Button -->
+
     <Button
         android:id="@+id/btnBack"
         android:layout_width="match_parent"

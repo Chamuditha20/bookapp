@@ -8,9 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-
+ 
     private static final String DATABASE_NAME = "ReadTrack.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -33,11 +33,33 @@ public class DBHelper extends SQLiteOpenHelper {
                 "addedDate TEXT)");
 
 
+        String driveFolderUrl = "https://drive.google.com/drive/folders/1-Emz9XOdwwZ4lI83yZVoHg60qXJSpDUs?usp=sharing";
+
+
         sqLiteDatabase.execSQL("INSERT INTO books (title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate) VALUES (" +
-                "'Clean Code', 'Robert C. Martin', 'Book', " +
-                "'A handbook of agile software craftsmanship. Focuses on writing readable, maintainable, and efficient code.', " +
-                "'https://github.com/jnguyen095/clean-code/raw/master/Clean.Code.A.Handbook.of.Agile.Software.Craftsmanship.pdf', " +
-                "464, 120, 25.8, 5, '2026-11-01')");
+                "'A Very Busy Day!', 'Chisanga Mukuka', 'Book', " +
+                "'A story about a busy trip to town with Mama, seeing tall buildings, shops, and choosing a special gift.', " +
+                "'" + driveFolderUrl + "', " +
+                "20, 10, 50.0, 5, '2026-11-15')");
+
+        sqLiteDatabase.execSQL("INSERT INTO books (title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate) VALUES (" +
+                "'Auntie Boi’s Gift', 'Baeletsi Tsatsi', 'Book', " +
+                "'Kopano and Rea travel to the big post office in town to collect a special surprise gift sent by Auntie Boi.', " +
+                "'" + driveFolderUrl + "', " +
+                "24, 24, 100.0, 5, '2026-11-15')");
+
+        sqLiteDatabase.execSQL("INSERT INTO books (title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate) VALUES (" +
+                "'Mama Antelope’s House', 'Florenca Marundu', 'Book', " +
+                "'Hare plays a trick by locking himself inside Mama Antelope’s house, and all the animals try to open the door.', " +
+                "'" + driveFolderUrl + "', " +
+                "22, 5, 22.7, 4, '2026-11-15')");
+
+        sqLiteDatabase.execSQL("INSERT INTO books (title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate) VALUES (" +
+                "'Teju’s Shadow', 'Sope Martins', 'Book', " +
+                "'Teju learns that his shadow is not scary at all and makes fun shadow puppets with Mum before bedtime.', " +
+                "'" + driveFolderUrl + "', " +
+                "20, 0, 0.0, 5, '2026-11-15')");
+
 
         sqLiteDatabase.execSQL("INSERT INTO books (title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate) VALUES (" +
                 "'Attention Is All You Need', 'Ashish Vaswani et al.', 'Research Article', " +
@@ -46,15 +68,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 "15, 15, 100.0, 5, '2026-11-05')");
 
         sqLiteDatabase.execSQL("INSERT INTO books (title, author, category, content, pdfUrl, totalPages, readPages, progress, rating, addedDate) VALUES (" +
-                "'The Pragmatic Programmer', 'Andrew Hunt & David Thomas', 'Book', " +
-                "'Your journey to mastery. Covers core software engineering best practices, debugging, and career advice.', " +
-                "'https://www.cin.ufpe.br/~cavmj/104The%20Pragmatic%20Programmer,%20From%20Journeyman%20To%20Master%20-%20Andrew%20Hunt,%20David%20Thomas%20-%20Addison%20Wesley%20-%201999.pdf', " +
-                "352, 50, 14.2, 4, '2026-11-10')");
+                "'Clean Code', 'Robert C. Martin', 'Book', " +
+                "'A handbook of agile software craftsmanship. Focuses on writing readable, maintainable, and efficient code.', " +
+                "'https://github.com/jnguyen095/clean-code/raw/master/Clean.Code.A.Handbook.of.Agile.Software.Craftsmanship.pdf', " +
+                "464, 120, 25.8, 5, '2026-11-01')");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS books");
         onCreate(sqLiteDatabase);
     }
@@ -76,14 +97,13 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("addedDate", addedDate);
 
         long result = db.insert("books", null, values);
-        return result != -1; //
+        return result != -1;
     }
 
 
     public Cursor getAllBooks() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM books ORDER BY id DESC", null);
-        return cursor;
+        return db.rawQuery("SELECT * FROM books ORDER BY id DESC", null);
     }
 
 
