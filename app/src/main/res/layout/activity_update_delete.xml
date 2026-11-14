@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F7FA"
+    android:background="#F0F4F8"
     android:padding="20dp">
 
     <LinearLayout
@@ -10,17 +10,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Read, Update &amp; Delete"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#1E293B"
+            android:textColor="#0F172A"
             android:gravity="center"
             android:layout_marginBottom="16dp" />
-
 
         <Button
             android:id="@+id/btnOpenPdf"
@@ -33,13 +31,12 @@
             android:padding="12dp"
             android:layout_marginBottom="16dp" />
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title:"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <EditText
             android:id="@+id/etUpTitle"
@@ -47,16 +44,15 @@
             android:layout_height="wrap_content"
             android:textColor="#0F172A"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp" />
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Author:"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <EditText
             android:id="@+id/etUpAuthor"
@@ -64,16 +60,15 @@
             android:layout_height="wrap_content"
             android:textColor="#0F172A"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp" />
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category:"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <RadioGroup
             android:id="@+id/rgUpCategory"
@@ -98,7 +93,6 @@
                 android:textColor="#0F172A" />
         </RadioGroup>
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,16 +108,15 @@
             android:gravity="top|start"
             android:textColor="#0F172A"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp" />
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="PDF Link / URL:"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <EditText
             android:id="@+id/etUpPdfUrl"
@@ -132,16 +125,15 @@
             android:inputType="textUri"
             android:textColor="#0F172A"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp" />
-
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total Pages:"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <EditText
             android:id="@+id/etUpTotalPages"
@@ -150,7 +142,7 @@
             android:inputType="number"
             android:textColor="#0F172A"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp" />
 
         <TextView
@@ -158,7 +150,7 @@
             android:layout_height="wrap_content"
             android:text="Pages Read So Far:"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <EditText
             android:id="@+id/etUpReadPages"
@@ -167,10 +159,9 @@
             android:inputType="number"
             android:textColor="#0F172A"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp" />
 
-        <!-- 7. Rating (SeekBar) -->
         <TextView
             android:id="@+id/tvUpRating"
             android:layout_width="wrap_content"
@@ -178,7 +169,7 @@
             android:text="Rating: 0 / 5"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <SeekBar
             android:id="@+id/sbUpRating"
@@ -188,13 +179,12 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="12dp" />
 
-        <!-- 8. Date -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Added Date:"
             android:textStyle="bold"
-            android:textColor="#334155" />
+            android:textColor="#1E293B" />
 
         <EditText
             android:id="@+id/etUpDate"
@@ -202,9 +192,8 @@
             android:layout_height="wrap_content"
             android:textColor="#0F172A"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="20dp" />
-
 
         <Button
             android:id="@+id/btnUpdate"

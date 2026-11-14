@@ -120,9 +120,11 @@ public class ViewBooksActivity extends AppCompatActivity {
 
     private void filterBooks(String text) {
         ArrayList<BookData> filteredList = new ArrayList<>();
+        String query = text.toLowerCase().trim();
         for (BookData item : bookList) {
-            if (item.getTitle().toLowerCase().contains(text.toLowerCase()) ||
-                    item.getAuthor().toLowerCase().contains(text.toLowerCase())) {
+            if (item.getTitle().toLowerCase().contains(query) ||
+                item.getAuthor().toLowerCase().contains(query) ||
+                item.getCategory().toLowerCase().contains(query)) {
                 filteredList.add(item);
             }
         }

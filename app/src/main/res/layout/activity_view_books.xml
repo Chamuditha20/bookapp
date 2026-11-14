@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FAFC"
-    android:padding="16dp">
-
+    android:background="#F0F4F8"
+    android:padding="16dp"
+    tools:context=".ViewBooksActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -15,50 +17,60 @@
         android:textStyle="bold"
         android:textColor="#0F172A"
         android:gravity="center"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginBottom="4dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap any book/article to view details, update progress, or delete"
+        android:textSize="12sp"
+        android:textColor="#64748B"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
 
     <TextView
         android:id="@+id/tvSummaryStats"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Items: 0  |  Completed: 0"
+        android:text="Total Items: 0   |   Completed: 0"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="#1E40AF"
-        android:background="#DBEAFE"
-        android:padding="10dp"
+        android:background="@drawable/bg_summary_card"
+        android:padding="12dp"
         android:gravity="center"
-        android:layout_marginBottom="10dp" />
-
+        android:layout_marginBottom="12dp" />
 
     <EditText
         android:id="@+id/etSearchBook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search by Title or Author..."
+        android:hint=" Search by Title, Author, or Category..."
         android:textSize="14sp"
         android:padding="12dp"
-        android:background="#FFFFFF"
+        android:background="@drawable/bg_search_input"
         android:textColor="#0F172A"
-        android:layout_marginBottom="12dp" />
-
+        android:textColorHint="#94A3B8"
+        android:layout_marginBottom="10dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewBooks"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingVertical="4dp"
         android:layout_marginBottom="12dp" />
-
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back to Dashboard"
-        android:backgroundTint="#475569"
+        android:text="Back to Add New"
+        android:backgroundTint="#334155"
         android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:textStyle="bold"
         android:padding="12dp" />
 
 </LinearLayout>

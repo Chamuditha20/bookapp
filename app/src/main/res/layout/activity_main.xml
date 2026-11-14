@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="#F5F7FA"
+    android:background="#F0F4F8"
     android:padding="20dp">
 
     <LinearLayout
@@ -20,30 +20,30 @@
             android:text="ReadTrack - Add New Item"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#1E293B"
+            android:textColor="#0F172A"
             android:gravity="center"
             android:layout_marginBottom="20dp"/>
 
         <EditText
+            android:id="@+id/etTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etTitle"
             android:hint="Enter Book / Article Title"
             android:inputType="text"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp"
             android:textColorHint="#64748B"
             android:textColor="#0F172A"/>
 
         <EditText
+            android:id="@+id/etAuthor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etAuthor"
             android:hint="Enter Author Name"
             android:inputType="text"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp"
             android:textColorHint="#64748B"
             android:textColor="#0F172A"/>
@@ -54,78 +54,86 @@
             android:text="Select Category"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#334155"
-            android:padding="12dp"/>
+            android:textColor="#1E293B"
+            android:paddingVertical="8dp"/>
         <RadioGroup
+            android:id="@+id/rgCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rgCategory"
             android:orientation="horizontal"
             android:layout_marginBottom="12dp">
             
             <RadioButton
+                android:id="@+id/rbBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbBook"
                 android:text="Book"
+                android:textColor="#0F172A"
                 android:layout_marginRight="24dp"/>
             <RadioButton
+                android:id="@+id/rbArticle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/rbArticle"
                 android:text="Article"
+                android:textColor="#0F172A"
                 android:layout_marginRight="24dp"/>
         </RadioGroup>
+
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/etTotalPages"
-            android:inputType="number"
-            android:padding="12dp"
-            android:hint="Total Pages(eg.250)"
-            android:background="#FFFFFF"
-            android:layout_marginBottom="12dp"
-            android:textColorHint="#64748B"
-            android:textColor="#0F172A"/>
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etReadPages"
             android:inputType="number"
-            android:hint="Read Pages(eg.100)"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:hint="Total Pages (e.g., 250)"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp"
             android:textColorHint="#64748B"
             android:textColor="#0F172A"/>
+
+        <EditText
+            android:id="@+id/etReadPages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Read Pages (e.g., 100)"
+            android:padding="12dp"
+            android:background="@drawable/bg_edit_text"
+            android:layout_marginBottom="12dp"
+            android:textColorHint="#64748B"
+            android:textColor="#0F172A"/>
+
         <TextView
+            android:id="@+id/tvRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvRating"
             android:text="Rating: 1/5"
-            android:padding="12dp"
+            android:paddingVertical="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#334155"
+            android:textColor="#1E293B"
             android:layout_marginTop="4dp"/>
+
         <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/sbRating"
-            android:max="5"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"/>
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:max="5"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
             android:id="@+id/etDate"
-            android:hint="Added Date: (eg,2026-09-11)"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Added Date (e.g., 2026-09-11)"
             android:inputType="date"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp"
             android:textColorHint="#64748B"
             android:textColor="#0F172A"/>
+
         <EditText
             android:id="@+id/etContent"
             android:layout_width="match_parent"
@@ -136,8 +144,9 @@
             android:inputType="textMultiLine"
             android:gravity="top|start"
             android:padding="12dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/bg_edit_text"
             android:layout_marginBottom="12dp" />
+
         <EditText
             android:id="@+id/etPdfUrl"
             android:layout_width="match_parent"
@@ -147,12 +156,13 @@
             android:textColor="#0F172A"
             android:inputType="textUri"
             android:padding="12dp"
-            android:background="#FFFFFF"
-            android:layout_marginBottom="12dp" />
+            android:background="@drawable/bg_edit_text"
+            android:layout_marginBottom="16dp" />
+
         <Button
+            android:id="@+id/btnSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnSave"
             android:text="Save Record"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -162,9 +172,9 @@
             android:layout_marginBottom="12dp"/>
         
         <Button
+            android:id="@+id/btnViewList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnViewList"
             android:text="View Reading List"
             android:textSize="16sp"
             android:textStyle="bold"
