@@ -106,7 +106,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return result > 0;
     }
 
-   
+
     public boolean deleteBook(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete("books", "id = ?", new String[]{String.valueOf(id)});
